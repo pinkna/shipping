@@ -13,7 +13,6 @@ mongoose.connect('mongodb://localhost/shipping');
 
 
 
-
 // user schema/model
 var users = require('./Model/userModel.js');
 var customer = require('./Model/customerModel.js');
@@ -85,6 +84,14 @@ app.post('/customerlist', function (req, res) {
   });
 });
 
+app.delete('/customerlist/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id);
+  customer.remove({_id: req.params.id}, function (err, doc) {
+    res.json(doc);
+  });
+});
+
 
 
 app.get('/customerlist/:id', function (req, res) {
@@ -127,6 +134,15 @@ app.get('/receiptlist', function (req, res) {
     res.json(docs);
   });
 });
+
+app.get('/receiptlist/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id);
+  receipt.findById(req.params.id, function (err, doc) {
+    res.json(doc);
+  });
+});
+
 
 //listening
 app.listen(3000);

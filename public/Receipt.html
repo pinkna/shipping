@@ -47,9 +47,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User&nbsp;<i class="fa et-down fa-angle-double-down"></i></a>
               <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a href="Customermaster.html">บันทึกข้อมูลลูกค้า</a>
-                </li>
+                
                 <li>
                   <a href="Receipt.html">บันทึกใบรับสินค้า</a>
                 </li>
@@ -79,47 +77,98 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" name="receiptForm"  novalidate>
               
               
-              <div class="form-group">
+
+
+
+
+        
+       
+<div  >
+  
+
+  <p></p><div class="col-sm-5">
+Search <input Type="text" ng-model="search">
+      
+      
+                      <select ng-model="receipt" id="customername"  ng-options="list.name+' '+list.surname for list in customerlist 
+                      | filter:search">
+                      <option value ="">Choose a name</option>
+                      </select>
+</div>
+<a href="./Customermaster.html"  class="btn btn-sm btn-success text-center" type="button">Add new customer!</a>
+                    <br></br>
+              <div class="form-group" ng-class="{ 'has-error' : receiptForm.sendername.$invalid }">
                 <div class="col-sm-2">
                   <label for="inputPassword3" class="control-label">ชื่อผู้ส่ง</label>
                 </div>
                 <div class="col-sm-10">
-                  <input  class="form-control"  ng-model="receipt.sendername">
+
+                  <input  name="sendername" class="form-control" id="copycustomername"  ng-model="receipt.name"  required>
+
+                  
+                  <p ng-show="receiptForm.sendername.$invalid" class="help-block">Please select sender </p>
+
+                 
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" ng-class="{ 'has-error' : receiptForm.sendertel.$invalid }">
                 <div class="col-sm-2">
                   <label for="inputPassword3" class="control-label">เบอร์โทรผู้ส่ง</label>
                 </div>
                 <div class="col-sm-10">
-                  <input  class="form-control"  ng-model="receipt.sendertel">
+                  <input name="sendertel" class="form-control"  ng-model="receipt.tel" required>
+                  <p ng-show="receiptForm.sendertel.$invalid" class="help-block">Please input sender number</p>
                 </div>
               </div>
-              <div class="form-group">
+ </div>
+
+
+              <div class="form-group" ng-class="{ 'has-error' : receiptForm.date.$invalid }">
+                <div class="col-sm-2">
+                  <label for="inputPassword3" class="control-label">วันที่</label>
+                </div>
+                <div class="col-sm-10">
+                  <input name="date" type = "date" class="form-control"  ng-model="receipt.dateuser" required>
+                  <p ng-show="receiptForm.date.$invalid" class="help-block">Please select Date</p>
+                </div>
+              </div>
+              <div class="form-group" ng-class="{ 'has-error' : receiptForm.time.$invalid }">
+                <div class="col-sm-2">
+                  <label for="inputPassword3" class="control-label">เวลา</label>
+                </div>
+                <div class="col-sm-10">
+                  <input name="time" type = "time" class="form-control"  ng-model="receipt.time" required>
+                  <p ng-show="receiptForm.time.$invalid" class="help-block">Please input time</p>
+                </div>
+              </div>
+              <div class="form-group" ng-class="{ 'has-error' : receiptForm.receivename.$invalid }">
                 <div class="col-sm-2">
                   <label for="inputPassword3" class="control-label">ชื่อผู้รับ</label>
                 </div>
                 <div class="col-sm-10">
-                  <input  class="form-control"  ng-model="receipt.desname">
+                  <input name='receivename' class="form-control"  ng-model="receipt.desname" required>
+                  <p ng-show="receiptForm.receivename.$invalid" class="help-block">Please input name</p>
                 </div>
               </div>
-               <div class="form-group">
+               <div class="form-group" ng-class="{ 'has-error' : receiptForm.contactnumber.$invalid }">
                 <div class="col-sm-2">
                   <label for="inputPassword3" class="control-label">เบอร์โทรผู้รับ</label>
                 </div>
                 <div class="col-sm-10">
-                  <input  class="form-control"  ng-model="receipt.destel">
+                  <input name="contactnumber" class="form-control"  ng-model="receipt.destel" required>
+                  <p ng-show="receiptForm.contactnumber.$invalid" class="help-block">Please input contact number</p>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" ng-class="{ 'has-error' : receiptForm.address.$invalid }">
                 <div class="col-sm-2">
                   <label for="inputPassword3" class="control-label">ที่อยู่ปลายทาง</label>
                 </div>
                 <div class="col-sm-10">
-                  <input  class="form-control"  ng-model="receipt.desaddress">
+                  <input name="address" class="form-control"  ng-model="receipt.desaddress" required>
+                  <p ng-show="receiptForm.address.$invalid" class="help-block">Please input Address</p>
                 </div>
               </div>
               <div class="form-group">
@@ -130,20 +179,22 @@
                   <input  class="form-control"  ng-model="receipt.type">
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" ng-class="{ 'has-error' : receiptForm.item.$invalid }">
                 <div class="col-sm-2">
                   <label for="inputPassword3" class="control-label">รายการสินค้า</label>
                 </div>
                 <div class="col-sm-10">
-                  <input  class="form-control"  ng-model="receipt.itemdescription">
+                  <input name="item" class="form-control"  ng-model="receipt.itemdescription" required>
+                  <p ng-show="receiptForm.item.$invalid" class="help-block">Please input Item</p>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" ng-class="{ 'has-error' : receiptForm.quantity.$invalid }">
                 <div class="col-sm-2">
                   <label for="inputPassword3" class="control-label">จำนวน</label>
                 </div>
                 <div class="col-sm-10">
-                  <input  class="form-control"  ng-model="receipt.quantity">
+                  <input name="quantity" type = "number"   class="form-control"  ng-model="receipt.quantity" required>
+                  <p ng-show="receiptForm.quantity.$invalid" class="help-block">Please input quantity</p>
                 </div>
               </div>
               <div class="form-group">
@@ -151,15 +202,16 @@
                   <label for="inputPassword3" class="control-label">น้ำหนัก</label>
                 </div>
                 <div class="col-sm-10">
-                  <input  class="form-control"  ng-model="receipt.weight">
+                  <input name = "weight" type = "number" class="form-control"  ng-model="receipt.weight">
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" ng-class="{ 'has-error' : receiptForm.price.$invalid }">
                 <div class="col-sm-2">
                   <label for="inputPassword3" class="control-label">ราคาค่าขนส่ง</label>
                 </div>
                 <div class="col-sm-10">
-                  <input  class="form-control"  ng-model="receipt.price">
+                  <input  name="price" type = "number" class="form-control"  ng-model="receipt.price" required>
+                  <p ng-show="receiptForm.price.$invalid" class="help-block">Please input price</p>
                 </div>
               </div>
               <div class="form-group">
@@ -186,7 +238,7 @@
                   <input  class="form-control"  ng-model="receipt.billing">
                 </div>
               </div>
-              <td><button ng-click="addReceipt()" class="btn btn-info" >Add Receipt</button></td>
+              <td><input type="submit" ng-disabled="receiptForm.$invalid" ng-click=addReceipt() value="Add Receipt" class="btn btn-info" ></input></td>
             </form>
             <table class="table">
               <thead>
@@ -213,4 +265,6 @@
   
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 <script src="controllers/ReceiptCtrl.js"></script>
+  
+
 </body></html>

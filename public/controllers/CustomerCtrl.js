@@ -21,6 +21,13 @@ $scope.addCustomer = function() {
   });
 };
 
+$scope.remove = function(id) {
+  console.log(id);
+  $http.delete('/customerlist/' + id).success(function(response) {
+    refresh();
+  });
+};
+
 $scope.edit = function(id) {
   console.log(id);
   $http.get('/customerlist/' + id).success(function(response) {

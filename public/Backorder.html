@@ -6,6 +6,7 @@
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/Home.css" rel="stylesheet" type="text/css">
+    
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
@@ -47,9 +48,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User&nbsp;<i class="fa et-down fa-angle-double-down"></i></a>
               <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a href="Customermaster.html">บันทึกข้อมูลลูกค้า</a>
-                </li>
+                
                 <li>
                   <a href="Receipt.html">บันทึกใบรับสินค้า</a>
                 </li>
@@ -85,8 +84,10 @@
             <tbody>
             
               <tr ng-repeat="receipt in receiptlist">
+              <div>
                   <td>{{receipt._id}}</td>
-                  <td>{{receipt.sendername}}</td>
+              </div>
+                  <td>{{receipt.name}}</td>
                   <td>{{receipt.itemdescription}}</td>
                   <td>{{receipt.status}}</td>
                   <td><button  class="btn btn-info" >Print Receipt</button></td>
@@ -100,6 +101,6 @@
   </div>
     
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-<script src="controllers/ReceiptCtrl.js"></script>
+<script src="controllers/backorderCtrl.js"></script>
 
 </body></html>
